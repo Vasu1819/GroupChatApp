@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+repositories {
+    mavenLocal()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+android {
+    compileSdkVersion 32
+
+    defaultConfig {
+        applicationId "com.google.firebase.udacity.groupchat"
+        minSdkVersion 28
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/LICENSE', 'META-INF/LICENSE-FIREBASE.txt', 'META-INF/NOTICE']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.firebase:firebase-database:19.3.0'
+    implementation 'com.google.firebase:firebase-analytics:17.4.3'
+    implementation 'com.google.firebase:firebase-config:19.1.4'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.google.firebase:firebase-messaging:20.2.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+    // Displaying images
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+}
+apply plugin: 'com.google.gms.google-services'
